@@ -6,8 +6,11 @@ import { tokenAtom } from "../../util/TokenAtom";
 import { userAtom } from "../../util/UserAtom";
 
 const LoginPage = () => {
-  const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
+  const testId = "testID";
+  const testPw = 1234;
+
+  const [id, setId] = useState(testId);
+  const [pw, setPw] = useState(testPw);
   const setAccessToken = useSetRecoilState(tokenAtom);
   const setUserInfo = useSetRecoilState(userAtom);
   const navigate = useNavigate();
@@ -36,6 +39,7 @@ const LoginPage = () => {
           <input
             type="text"
             autoFocus
+            value={testId}
             placeholder="아이디를 입력해주세요"
             onChange={(e) => {
               setId(e.target.value);
@@ -47,6 +51,7 @@ const LoginPage = () => {
           Password
           <input
             type="password"
+            value={testPw}
             placeholder="패스워드를 입력해주세요"
             onChange={(e) => setPw(e.target.value)}
             className="w-full p-2 border border-gray-200"

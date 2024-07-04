@@ -12,4 +12,4 @@
 
 ## Start
 
-- npm start, npm run dev
+- npm run start, npm run dev

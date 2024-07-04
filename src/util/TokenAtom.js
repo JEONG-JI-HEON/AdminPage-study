@@ -8,5 +8,9 @@ export const tokenAtom = atom({
 export const isLoginSelector = selector({
   key: "isLoginSelector",
   get: ({ get }) => !!get(tokenAtom),
-  //   set: ({ set }, newValue) => set(myAtom, newValue),
+  set: ({ set }, newValue) => {
+    if (!newValue) {
+      set(tokenAtom, undefined); // 로그아웃 시 tokenAtom을 undefined로 설정
+    }
+  },
 });
