@@ -1,19 +1,18 @@
 import { LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined, SettingOutlined } from "@ant-design/icons";
-import { Button, Layout, Menu, theme } from "antd";
-import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { collapsedAtom } from "../../../util/PageAtom";
 import { isLoginSelector } from "../../../util/TokenAtom";
-import { useNavigate } from "react-router-dom";
+
+import { Button, Layout, Menu, theme } from "antd";
 
 const { Header } = Layout;
 
 const AdminHeader = () => {
-  const [isLogOut, setIsLogOut] = useState(false);
+  // const [isLogOut, setIsLogOut] = useState(false);
   const [collapsed, setCollapsed] = useRecoilState(collapsedAtom);
   const [loginState, setLoginState] = useRecoilState(isLoginSelector);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const buttonStyle = {
     fontSize: "16px",
@@ -28,21 +27,27 @@ const AdminHeader = () => {
   const items = [
     {
       label: "설정",
-      key: "group",
+      key: "setting",
       icon: <SettingOutlined />,
+      onClick: () => isSetting(),
     },
     {
       label: "로그아웃",
-      key: "group",
+      key: "logOut",
       icon: <LogoutOutlined />,
+      onClick: () => isLogOut(),
     },
   ];
 
-  useEffect(() => {
-    if (isLogOut) {
-      setLoginState(false);
-    }
-  }, [isLogOut]);
+  /** 설정 */
+  const isSetting = () => {
+    console.log("설정");
+  };
+
+  /** 로그아웃 */
+  const isLogOut = () => {
+    setLoginState(false);
+  };
 
   return (
     <Header className="p-0 pl-2 pr-2 flex justify-between" style={{ background: colorBgContainer }}>
@@ -53,7 +58,7 @@ const AdminHeader = () => {
         style={buttonStyle}
       />
       {/* <Button type="text" icon={<LogoutOutlined />} onClick={() => setIsLogOut(true)} style={buttonStyle} /> */}
-      <Menu mode="horizontal" items={items} onClick={() => setIsLogOut(true)} style={buttonStyle} />
+      <Menu mode="horizontal" items={items} style={buttonStyle} />
     </Header>
   );
 };

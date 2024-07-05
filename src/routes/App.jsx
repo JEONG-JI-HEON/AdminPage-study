@@ -6,16 +6,23 @@ import LoginPage from "../pages/LoginPage/LoginPage";
 import MainPage from "../pages/MainPage/MainPage";
 import { isLoginSelector } from "../util/TokenAtom";
 import ProtectedRoute from "./ProtectedRoute";
-import Header from "../layout/Header";
+import MainHeader from "../layout/MainHeader";
 
 const App = () => {
   const isLogin = useRecoilValue(isLoginSelector);
 
   return (
     <Router>
-      {/* <Header /> */}
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <MainHeader />
+              <MainPage />
+            </>
+          }
+        />
         <Route path="/login" element={<LoginPage />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/admin" element={<AdminPage />} />
