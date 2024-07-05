@@ -1,10 +1,9 @@
 import { LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined, SettingOutlined } from "@ant-design/icons";
-import { Button, Layout, Menu, theme } from "antd";
-import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { collapsedAtom } from "../../../util/PageAtom";
 import { isLoginSelector } from "../../../util/TokenAtom";
-import { useNavigate } from "react-router-dom";
+
+import { Button, Layout, Menu, theme } from "antd";
 
 const { Header } = Layout;
 

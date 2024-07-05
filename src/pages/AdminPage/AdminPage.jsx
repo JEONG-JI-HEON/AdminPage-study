@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../../util/UserAtom";
 
 import { DatabaseOutlined, HomeOutlined, LoadingOutlined, PieChartOutlined } from "@ant-design/icons";
-import { Avatar, Layout, Menu, Spin, theme } from "antd";
 import { collapsedAtom } from "../../util/PageAtom";
+
+import { Avatar, Layout, Menu, Spin, theme } from "antd";
 
 import AdminDashboard from "./_components/AdminDashboard";
 import AdminHeader from "./_components/AdminHeader";
@@ -41,7 +42,7 @@ const AdminPage = () => {
     timeoutRef.current = setTimeout(() => {
       setContentState(key);
       setIsLoading(false);
-    }, 1000); // Simulate a 1-second server request
+    }, 500);
   };
 
   // useEffect(() => {
