@@ -5,7 +5,7 @@ import { userAtom } from "../../util/UserAtom";
 import { DatabaseOutlined, HomeOutlined, LoadingOutlined, PieChartOutlined } from "@ant-design/icons";
 import { collapsedAtom } from "../../util/PageAtom";
 
-import { Avatar, Layout, Menu, Spin, theme } from "antd";
+import { Avatar, Layout, Menu, Skeleton, Spin, theme } from "antd";
 
 import AdminDashboard from "./_components/AdminDashboard";
 import AdminHeader from "./_components/AdminHeader";
@@ -72,16 +72,20 @@ const AdminPage = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            {isLoading ? (
-              <Spin indicator={<LoadingOutlined spin />} size="large" />
-            ) : (
-              <>
+            <>
+              <Skeleton
+                loading={isLoading}
+                active
+                // avatar
+                title={{ width: "100%" }}
+                paragraph={{ width: "100%", rows: 5 }}
+              >
                 {contentState === 1 && <AdminDashboard />}
                 {contentState === 2 && <AdminMaterialMng />}
                 {contentState === 3 && <AdminInBoundMng />}
                 {contentState === 4 && <AdminOutBoundMng />}
-              </>
-            )}
+              </Skeleton>
+            </>
           </Content>
         </Layout>
       </Layout>
