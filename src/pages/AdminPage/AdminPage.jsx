@@ -55,7 +55,9 @@ const AdminPage = () => {
         <Sider trigger={null} collapsible collapsed={collapsed}>
           {/* <Space className="w-full h-40 text-white" mode="inline" size={16} wrap collapsible> */}
           <div className="w-full h-40 text-white flex justify-center items-center gap-3">
-            <Avatar size={40}>USER</Avatar>
+            <Avatar size={40} style={{ backgroundColor: "#f56a00" }}>
+              USER
+            </Avatar>
             {!collapsed && <div className="whitespace-nowrap">관리자 {userInfo.id}</div>}
           </div>
           {/* </Space> */}
